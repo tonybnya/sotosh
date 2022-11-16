@@ -7,15 +7,14 @@
  */
 int sotosh_num_builtins(void)
 {
-  char *builtin_str[] = {
-    "cd",
-    "help",
-    "exit"
-  };
+	char *builtin_str[] = {
+		"cd",
+		"help",
+		"exit"
+	};
 
-  return (sizeof(builtin_str) / sizeof(char *));
+	return (sizeof(builtin_str) / sizeof(char *));
 }
-
 /**
  * sotosh_cd - builtin cd (change directory)
  * @args: commands line arguments
@@ -24,18 +23,19 @@ int sotosh_num_builtins(void)
  */
 int sotosh_cd(char **args)
 {
-  if (args[1] == NULL)
-  {
-    fprintf(stderr, "sotosh: expected argument to \"cd\"\n");
-  }
-  else
-  {
-    if (chdir(args[1]) != 0)
-    {
-      perror("sotosh");
-    }
-  }
-  return (1);
+	if (args[1] == NULL)
+	{
+		fprintf(stderr, "sotosh: expected argument to \"cd\"\n");
+	}
+	else
+	{
+		if (chdir(args[1]) != 0)
+		{
+			perror("sotosh");
+		}
+	}
+
+	return (1);
 }
 
 /**
@@ -46,25 +46,24 @@ int sotosh_cd(char **args)
  */
 int sotosh_help(__attribute__((unused)) char **args)
 {
-  int i;
-  char *builtin_str[] = {
-    "cd",
-    "help",
-    "exit"
-  };
+	int i;
+	char *builtin_str[] = {
+		"cd",
+		"help",
+		"exit"
+	};
 
-  printf("Soso Oloju & Tony B. NYA Shell (sotosh)\n");
-  printf("Type-in command and arguments\n");
-  printf("Some builtin functions have been builded:\n");
+	printf("Soso Oloju & Tony B. NYA Shell (sotosh)\n");
+	printf("Type-in command and arguments\n");
+	printf("Some builtin functions have been builded:\n");
 
-  for (i = 0; i < sotosh_num_builtins(); i++)
-  {
-    printf("%d->  %s\n", i + 1, builtin_str[i]);
-  }
+	for (i = 0; i < sotosh_num_builtins(); i++)
+	{
+		printf("%d->  %s\n", i + 1, builtin_str[i]);
+	}
+	printf("man command is our best friend\n");
 
-  printf("man command is our best friend\n");
-
-  return (1);
+	return (1);
 }
 
 /**
@@ -75,5 +74,5 @@ int sotosh_help(__attribute__((unused)) char **args)
  */
 int sotosh_exit(__attribute__((unused)) char **args)
 {
-  return (0);
+	return (0);
 }

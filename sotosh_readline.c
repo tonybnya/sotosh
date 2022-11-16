@@ -7,24 +7,24 @@
  */
 char *sotosh_readline(void)
 {
-    char *line;
-    size_t bufsize;
+	char *line;
+	size_t bufsize;
 
-    bufsize = 0;
-    line = NULL;
+	bufsize = 0;
+	line = NULL;
 
-    if (getline(&line, &bufsize, stdin) == -1)
-    {
-        if (feof(stdin))
-        {
-            exit(EXIT_SUCCESS);
-        }
-        else
-        {
-            perror("Error reading the line from stdin");
-            exit(EXIT_FAILURE);
-        }
-    }
+	if (getline(&line, &bufsize, stdin) == -1)
+	{
+		if (feof(stdin))
+		{
+			exit(EXIT_SUCCESS);
+		}
+		else
+		{
+			perror("Error reading the line from stdin");
+			exit(EXIT_FAILURE);
+		}
+	}
 
-    return (line);
+	return (line);
 }

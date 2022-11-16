@@ -10,41 +10,41 @@
  */
 char **sotosh_splitline(char *line)
 {
-    int bufsize;
-    int position;
-    char **args;
-    char *arg;
+	int bufsize;
+	int position;
+	char **args;
+	char *arg;
 
-    bufsize = SOTOSH_ARG_BUFSIZE;
-    position = 0;
-    args = malloc(bufsize * sizeof(char*));
+	bufsize = SOTOSH_ARG_BUFSIZE;
+	position = 0;
+	args = malloc(bufsize * sizeof(char *));
 
-    if (!args)
-    {
-        fprintf(stderr, "sotosh: memory allocation error\n");
-        exit(EXIT_FAILURE);
-    }
+	if (!args)
+	{
+		fprintf(stderr, "sotosh: memory allocation error\n");
+		exit(EXIT_FAILURE);
+	}
 
-    arg = strtok(line, SOTOSH_ARG_DELIMITER);
-    while (arg != NULL)
-    {
-        args[position] = arg;
-        position++;
+	arg = strtok(line, SOTOSH_ARG_DELIMITER);
+	while (arg != NULL)
+	{
+		args[position] = arg;
+		position++;
 
-        if (position >= bufsize)
-        {
-            bufsize += SOTOSH_ARG_BUFSIZE;
-            args = realloc(args, bufsize * sizeof(char*));
-            if (!args)
-            {
-                fprintf(stderr, "sotosh: memory allocation error\n");
-                exit(EXIT_FAILURE);
-            }
-        }
+		if (position >= bufsize)
+		{
+			bufsize += SOTOSH_ARG_BUFSIZE;
+			args = realloc(args, bufsize * sizeof(char *));
+			if (!args)
+			{
+				fprintf(stderr, "sotosh: memory allocation error\n");
+				exit(EXIT_FAILURE);
+			}
+		}
 
-        arg = strtok(NULL, SOTOSH_ARG_DELIMITER);
-    }
+		arg = strtok(NULL, SOTOSH_ARG_DELIMITER);
+	}
 
-    args[position] = NULL;
-    return (args);
+	args[position] = NULL;
+	return (args);
 }

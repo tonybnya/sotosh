@@ -7,21 +7,24 @@
  */
 int main(void)
 {
-    char **args;
-    char *line;
-    char *prompt;
-    int status;
+	char **args;
+	char *line;
+	char *prompt;
+	int status;
 
-    prompt = "($) ";
+	prompt = "($) ";
 
-    do {
-        printf("%s", prompt);
-        line = sotosh_readline();
-        args = sotosh_splitline(line);
-        status = sotosh_execute(args);
-        printf("\n");
+	do {
+		printf("%s", prompt);
+		line = sotosh_readline();
+		args = sotosh_splitline(line);
+		status = sotosh_execute(args);
 
-        free(line);
-        free(args);
-    } while (status);
+		printf("\n");
+
+		free(line);
+		free(args);
+	} while (status);
+
+	return (0);
 }
