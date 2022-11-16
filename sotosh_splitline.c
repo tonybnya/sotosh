@@ -1,7 +1,6 @@
 #include "main.h"
 #define SOTOSH_ARG_BUFSIZE 64
-#define SOTOSH_ARG_DELIMITER " "
-/*#define SOTOSH_ARG_DELIMITER " \t\r\n\a"*/
+#define SOTOSH_ARG_DELIMITER " \t\r\n\a"
 
 /**
  * sotosh_splitline - separates line into program & args
